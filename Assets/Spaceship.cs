@@ -45,11 +45,11 @@ public class Spaceship : MonoBehaviour {
 
     private void RotateLeft() {
         rotation = Direction.Left;
-        print("Rotating left");
+        transform.Rotate(Vector3.forward);
     }
 
     private void RotateRight() {
         rotation = Direction.Right;
-        print("Rotating right");
+        transform.Rotate(-Vector3.forward);
     }
 }
