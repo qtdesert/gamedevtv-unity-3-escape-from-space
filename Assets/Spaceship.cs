@@ -52,6 +52,8 @@ public class Spaceship : MonoBehaviour
 
     private void handleRotation()
     {
+        rigidBody.freezeRotation = true;
+
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
         {
             if (rotation == Direction.Left)
@@ -71,6 +73,8 @@ public class Spaceship : MonoBehaviour
         {
             RotateRight();
         }
+
+        rigidBody.freezeRotation = true;
     }
 
     private void RotateLeft()
