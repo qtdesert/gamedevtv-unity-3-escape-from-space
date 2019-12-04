@@ -166,11 +166,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7814397580576370685}
     m_Modifications:
-    - target: {fileID: 590248306892550891, guid: b4ec75adba204374198692922a438809,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 817ff2987bdca10418af0bea9de5c644, type: 2}
     - target: {fileID: 1333253956167494220, guid: b4ec75adba204374198692922a438809,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -226,26 +221,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2932886979993264125, guid: b4ec75adba204374198692922a438809,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 817ff2987bdca10418af0bea9de5c644, type: 2}
-    - target: {fileID: 3627002856568725667, guid: b4ec75adba204374198692922a438809,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 817ff2987bdca10418af0bea9de5c644, type: 2}
     - target: {fileID: 5588212481165670448, guid: b4ec75adba204374198692922a438809,
         type: 3}
       propertyPath: m_Name
       value: Arm Boosters
       objectReference: {fileID: 0}
-    - target: {fileID: 6497416395064335234, guid: b4ec75adba204374198692922a438809,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 817ff2987bdca10418af0bea9de5c644, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4ec75adba204374198692922a438809, type: 3}
 --- !u!4 &9147649061297080631 stripped
@@ -266,11 +246,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket Body
       objectReference: {fileID: 0}
-    - target: {fileID: 522027964204969887, guid: 51b754b39b8a0154888bda5289100965,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 817ff2987bdca10418af0bea9de5c644, type: 2}
     - target: {fileID: 1909441930978960308, guid: 51b754b39b8a0154888bda5289100965,
         type: 3}
       propertyPath: m_LocalPosition.x

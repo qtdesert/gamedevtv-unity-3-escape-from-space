@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 2207614926194222967}
   - component: {fileID: 9223220650130535922}
   - component: {fileID: 1046754049025690746}
+  - component: {fileID: 8167761614775575437}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -392,6 +393,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8167761614775575437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324626256475838298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033710077, y: 0.033710085, z: 0.027858855}
+  m_Center: {x: 0, y: -8.881784e-16, z: 0.0029256155}
 --- !u!1 &9162970025886396098
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +417,7 @@ GameObject:
   - component: {fileID: 5779946061049654065}
   - component: {fileID: 1806219225662600078}
   - component: {fileID: 522027964204969887}
-  - component: {fileID: 8581976452981130931}
+  - component: {fileID: 2611853274813222626}
   m_Layer: 0
   m_Name: Thruster
   m_TagString: Untagged
@@ -450,7 +464,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3107575098457cf48a51ad6ac3b3a53f, type: 2}
+  - {fileID: 2100000, guid: 817ff2987bdca10418af0bea9de5c644, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -471,8 +485,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &8581976452981130931
-CapsuleCollider:
+--- !u!65 &2611853274813222626
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -481,7 +495,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2.0000002, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: -0.00000011920929, z: -0.00000008940697}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3271362479061374249}
   - component: {fileID: 7236500356417953990}
   - component: {fileID: 6164275291351382002}
+  - component: {fileID: 6500506108545600411}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
@@ -78,6 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6500506108545600411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219755000774292973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033710096, y: 0.033710115, z: 0.027858846}
+  m_Center: {x: -0.0000000010436871, y: -0.000000002739677, z: 0.0029256146}
 --- !u!1 &3702616888188571979
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +103,7 @@ GameObject:
   - component: {fileID: 5614704891372406513}
   - component: {fileID: 7608427236083894770}
   - component: {fileID: 346718166927414579}
-  - component: {fileID: 2678409145073695779}
+  - component: {fileID: 4865788383818817196}
   m_Layer: 0
   m_Name: Thruster
   m_TagString: Untagged
@@ -157,8 +171,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &2678409145073695779
-CapsuleCollider:
+--- !u!65 &4865788383818817196
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,9 +181,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 1.9999999, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4153422640205245443
 GameObject:
@@ -182,6 +195,7 @@ GameObject:
   - component: {fileID: 4010767480049585308}
   - component: {fileID: 5463242538173129961}
   - component: {fileID: 7355701096482634974}
+  - component: {fileID: 8513508699671334004}
   m_Layer: 0
   m_Name: Booster
   m_TagString: Untagged
@@ -249,6 +263,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8513508699671334004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153422640205245443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03371009, y: 0.033710107, z: 0.027858857}
+  m_Center: {x: 0, y: -0.000000002487407, z: 0.0029256155}
 --- !u!1 &4592424122807284447
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +321,6 @@ GameObject:
   - component: {fileID: 7567197740148640787}
   - component: {fileID: 7415652894529993555}
   - component: {fileID: 5039821020824573053}
-  - component: {fileID: 432734041858148065}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -362,17 +388,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &432734041858148065
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433446428061012753}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
