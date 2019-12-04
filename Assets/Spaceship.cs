@@ -8,11 +8,12 @@ public class Spaceship : MonoBehaviour {
     enum Direction { Left, Right };
     Direction rotation;
     Rigidbody rigidBody;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start() {
         rigidBody = GetComponent<Rigidbody>();
-        rigidBody.mass = 0.1f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +24,8 @@ public class Spaceship : MonoBehaviour {
     private void ProcessInput() {
         if (Input.GetKey(KeyCode.Space)) {
             Thrust();
+        } else {
+            ThrustRelease();
         }
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) {
             if (rotation == Direction.Left) {
@@ -41,6 +44,13 @@ public class Spaceship : MonoBehaviour {
 
     private void Thrust() {
         rigidBody.AddRelativeForce(Vector3.up);
+        if (!audioSource.isPlaying) {
+            audioSource.Play();
+        }
+    }
+
+    private void ThrustRelease() {
+        audioSource.Stop();
     }
 
     private void RotateLeft() {
