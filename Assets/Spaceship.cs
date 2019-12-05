@@ -3,89 +3,91 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spaceship : MonoBehaviour
-{    
+public class Spaceship : MonoBehaviour {
+
     enum Direction { Left, Right };
     Direction rotation;
     Rigidbody rigidBody;
     AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         handleThrust();
         handleRotation();
+        Reset();
     }
 
-    private void handleThrust()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
+    private void handleThrust() {
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
             throttle();
-        }
-        else
-        {
+        } else if (Input.GetKey(KeyCode.DownArrow)) {
+            throttleBackwards();
+        } else {
             releaseThrottle();
         }
     }
 
-    private void throttle()
-    {
+    private void throttle() {
         rigidBody.AddRelativeForce(Vector3.up);
-        if (!audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
+        PlayAudio();
+    }    
+
+    private void throttleBackwards() {
+        rigidBody.AddRelativeForce(Vector3.down);
+        PlayAudio();
     }
 
-    private void releaseThrottle()
-    {
-        audioSource.Stop();
+    private void releaseThrottle() {
+        StopAudio();
     }
 
-    private void handleRotation()
-    {
+    private void handleRotation() {
         rigidBody.freezeRotation = true;
-
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-        {
-            if (rotation == Direction.Left)
-            {
+        if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))) {
+            if (rotation == Direction.Left) {
                 RotateLeft();
-            }
-            else
-            {
+            } else {
                 RotateRight();
             }
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
+        } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             RotateLeft();
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
+        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             RotateRight();
         }
-
-        rigidBody.freezeRotation = true;
+        rigidBody.freezeRotation = false;
     }
 
-    private void RotateLeft()
-    {
+    private void RotateLeft() {
         rotation = Direction.Left;
         transform.Rotate(Vector3.forward);
     }
 
-    private void RotateRight()
-    {
+    private void RotateRight() {
         rotation = Direction.Right;
         transform.Rotate(-Vector3.forward);
+    }
+
+    private void Reset() {
+        if (Input.GetKey(KeyCode.R)) {
+            rigidBody.velocity = Vector3.zero;
+            rigidBody.transform.rotation = Quaternion.identity;
+            rigidBody.MovePosition(new Vector3(0, 3.14f, 0));
+        }
+    }
+
+    private void PlayAudio() {
+        if (!audioSource.isPlaying) {
+            audioSource.Play();
+        }
+    }
+
+    private void StopAudio() {
+        audioSource.Stop();
     }
 }
