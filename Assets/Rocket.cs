@@ -18,36 +18,36 @@ public class Rocket : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        handleThrust();
-        handleRotation();
+        HandleThrust();
+        HandleRotation();
         Reset();
     }
 
-    private void handleThrust() {
+    private void HandleThrust() {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
-            throttle();
+            Throttle();
         } else if (Input.GetKey(KeyCode.DownArrow)) {
-            throttleBackwards();
+            ThrottleBackwards();
         } else {
-            releaseThrottle();
+            ReleaseThrottle();
         }
     }
 
-    private void throttle() {
+    private void Throttle() {
         rigidBody.AddRelativeForce(Vector3.up);
         PlayAudio();
     }    
 
-    private void throttleBackwards() {
+    private void ThrottleBackwards() {
         rigidBody.AddRelativeForce(Vector3.down);
         PlayAudio();
     }
 
-    private void releaseThrottle() {
+    private void ReleaseThrottle() {
         StopAudio();
     }
 
-    private void handleRotation() {
+    private void HandleRotation() {
         rigidBody.freezeRotation = true;
         if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))) {
             if (rotation == Direction.Left) {
