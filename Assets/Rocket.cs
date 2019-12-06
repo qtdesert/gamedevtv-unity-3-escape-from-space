@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spaceship : MonoBehaviour {
+public class Rocket : MonoBehaviour {
 
     enum Direction { Left, Right };
     Direction rotation;
