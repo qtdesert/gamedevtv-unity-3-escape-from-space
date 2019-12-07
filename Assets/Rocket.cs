@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour {
 
+    [SerializeField] float mainThrust = 1000f;
+    [SerializeField] float rcsThrust = 100f;
+
     enum Direction { Left, Right };
     Direction rotation;
+
     Rigidbody rigidBody;
     AudioSource audioSource;
 
@@ -20,60 +24,63 @@ public class Rocket : MonoBehaviour {
     void Update() {
         HandleThrust();
         HandleRotation();
-        Reset();
+        HandleReset();
     }
 
     private void HandleThrust() {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
-            Throttle();
+            Thrust();
         } else if (Input.GetKey(KeyCode.DownArrow)) {
-            ThrottleBackwards();
+            ThrustBackwards();
         } else {
-            ReleaseThrottle();
+            ReleaseThrustLever();
         }
     }
 
-    private void Throttle() {
-        rigidBody.AddRelativeForce(Vector3.up);
+    private void Thrust() {
+        float forceThisFrame = mainThrust * Time.deltaTime;
+        rigidBody.AddRelativeForce(Vector3.up * forceThisFrame);
         PlayAudio();
     }    
 
-    private void ThrottleBackwards() {
+    private void ThrustBackwards() {
         rigidBody.AddRelativeForce(Vector3.down);
         PlayAudio();
     }
 
-    private void ReleaseThrottle() {
+    private void ReleaseThrustLever() {
         StopAudio();
     }
 
     private void HandleRotation() {
         rigidBody.freezeRotation = true;
+        float rotationThisFrame = rcsThrust * Time.deltaTime;
+
         if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))) {
             if (rotation == Direction.Left) {
-                RotateLeft();
+                RotateLeft(rotationThisFrame);
             } else {
-                RotateRight();
+                RotateRight(rotationThisFrame);
             }
         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            RotateLeft();
+            RotateLeft(rotationThisFrame);
         } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            RotateRight();
+            RotateRight(rotationThisFrame);
         }
         rigidBody.freezeRotation = false;
     }
 
-    private void RotateLeft() {
+    private void RotateLeft(float rotationThisFrame) {
         rotation = Direction.Left;
-        transform.Rotate(Vector3.forward);
+        transform.Rotate(Vector3.forward * rotationThisFrame);
     }
 
-    private void RotateRight() {
+    private void RotateRight(float rotationThisFrame) {
         rotation = Direction.Right;
-        transform.Rotate(-Vector3.forward);
+        transform.Rotate(-Vector3.forward * rotationThisFrame);
     }
 
-    private void Reset() {
+    private void HandleReset() {
         if (Input.GetKey(KeyCode.R)) {
             rigidBody.velocity = Vector3.zero;
             rigidBody.transform.rotation = Quaternion.identity;

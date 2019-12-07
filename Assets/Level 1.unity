@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 6433463211239447387, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
         type: 3}
       propertyPath: m_Name
-      value: Launch Pad (2)
+      value: Platform (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8447184032495817517, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
         type: 3}
@@ -230,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 6433463211239447387, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
         type: 3}
       propertyPath: m_Name
-      value: Launch Pad (1)
+      value: Platform (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8447184032495817517, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
         type: 3}
