@@ -37,6 +37,7 @@ public class Rocket : MonoBehaviour {
                 break;
             default:
                 print("Dead");
+                Reset();
                 break;
         }
     }
@@ -96,10 +97,14 @@ public class Rocket : MonoBehaviour {
 
     private void HandleReset() {
         if (Input.GetKey(KeyCode.R)) {
-            rigidBody.velocity = Vector3.zero;
-            rigidBody.transform.rotation = Quaternion.identity;
-            rigidBody.MovePosition(new Vector3(0, 3.14f, 0));
+            Reset();
         }
+    }
+
+    private void Reset() {
+        rigidBody.velocity = Vector3.zero;
+        rigidBody.transform.rotation = Quaternion.identity;
+        rigidBody.MovePosition(new Vector3(-25f, 3.14f, 0));
     }
 
     private void PlayAudio() {
