@@ -27,24 +27,38 @@ public class Rocket : MonoBehaviour {
         HandleReset();
     }
 
+    void OnCollisionEnter(Collision collision) {
+        switch (collision.gameObject.tag) {
+            case "Friendly":
+                print("OK");
+                break;
+            case "Fuel":
+                print("Fuel");
+                break;
+            default:
+                print("Dead");
+                break;
+        }
+    }
+
     private void HandleThrust() {
+        float forceThisFrame = mainThrust * Time.deltaTime;
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
-            Thrust();
+            Thrust(forceThisFrame);
         } else if (Input.GetKey(KeyCode.DownArrow)) {
-            ThrustBackwards();
+            ThrustBackwards(forceThisFrame);
         } else {
             ReleaseThrustLever();
         }
     }
 
-    private void Thrust() {
-        float forceThisFrame = mainThrust * Time.deltaTime;
+    private void Thrust(float forceThisFrame) {
         rigidBody.AddRelativeForce(Vector3.up * forceThisFrame);
         PlayAudio();
     }    
 
-    private void ThrustBackwards() {
-        rigidBody.AddRelativeForce(Vector3.down);
+    private void ThrustBackwards(float forceThisFrame) {
+        rigidBody.AddRelativeForce(Vector3.down * forceThisFrame);
         PlayAudio();
     }
 
