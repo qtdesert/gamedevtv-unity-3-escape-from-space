@@ -104,7 +104,7 @@ public class Rocket : MonoBehaviour {
     private void Reset() {
         rigidBody.velocity = Vector3.zero;
         rigidBody.transform.rotation = Quaternion.identity;
-        rigidBody.MovePosition(new Vector3(-25f, 3.14f, 0));
+        rigidBody.MovePosition(new Vector3(-27f, 7f, 0));
     }
 
     private void PlayAudio() {
