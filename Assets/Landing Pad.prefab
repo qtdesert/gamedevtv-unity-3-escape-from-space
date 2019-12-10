@@ -44,6 +44,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing Pad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6433463211239447387, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
+        type: 3}
+      propertyPath: m_TagString
+      value: Finish
+      objectReference: {fileID: 0}
     - target: {fileID: 8447184032495817517, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -133,6 +138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Landing Pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433463211239447387, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
+        type: 3}
+      propertyPath: m_TagString
+      value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 8447184032495817517, guid: ffb8ae0ce3f887e46acc691d60ebdcad,
         type: 3}
