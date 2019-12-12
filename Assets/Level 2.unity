@@ -7017,6 +7017,31 @@ PrefabInstance:
       propertyPath: rcsThrust
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 1569809759, guid: 5c5b90e6516ee4a42b0eba984692d3fe, type: 3}
+      propertyPath: mainEngine
+      value: 
+      objectReference: {fileID: 8300000, guid: 4906ad89d9c3c4b768a15c0e26c77fe4, type: 3}
+    - target: {fileID: 1569809759, guid: 5c5b90e6516ee4a42b0eba984692d3fe, type: 3}
+      propertyPath: levelStart
+      value: 
+      objectReference: {fileID: 8300000, guid: d6dfcbf587ce04959bad272ab2978136, type: 3}
+    - target: {fileID: 1569809759, guid: 5c5b90e6516ee4a42b0eba984692d3fe, type: 3}
+      propertyPath: deathExplosion
+      value: 
+      objectReference: {fileID: 8300000, guid: 02c7efa6939ef41f28d0a38b4f43c501, type: 3}
+    - target: {fileID: 1569809759, guid: 5c5b90e6516ee4a42b0eba984692d3fe, type: 3}
+      propertyPath: success
+      value: 
+      objectReference: {fileID: 8300000, guid: d6dfcbf587ce04959bad272ab2978136, type: 3}
+    - target: {fileID: 1569809759, guid: 5c5b90e6516ee4a42b0eba984692d3fe, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 8300000, guid: 02c7efa6939ef41f28d0a38b4f43c501, type: 3}
+    - target: {fileID: 6236913464800490296, guid: 5c5b90e6516ee4a42b0eba984692d3fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7814397580576370685, guid: 5c5b90e6516ee4a42b0eba984692d3fe,
         type: 3}
       propertyPath: m_LocalPosition.x
