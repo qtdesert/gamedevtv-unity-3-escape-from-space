@@ -3934,6 +3934,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6236913464800490296, guid: 5c5b90e6516ee4a42b0eba984692d3fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7814397580576370685, guid: 5c5b90e6516ee4a42b0eba984692d3fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4604,7 +4609,7 @@ PrefabInstance:
     - target: {fileID: 4256915501301994019, guid: 33ce7fe494f9ab8439e4b21665c9ec65,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6
+      value: -7.08
       objectReference: {fileID: 0}
     - target: {fileID: 4256915501301994019, guid: 33ce7fe494f9ab8439e4b21665c9ec65,
         type: 3}
@@ -4691,7 +4696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25efa7437571caf4c813b2bb61a026c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 20, y: 0, z: 0}
+  movementVector: {x: 12, y: 0, z: 0}
+  period: 2
   movementFactor: 0
 --- !u!1001 &1944864971
 PrefabInstance:
@@ -5040,7 +5046,7 @@ PrefabInstance:
     - target: {fileID: 4256915501301994019, guid: 33ce7fe494f9ab8439e4b21665c9ec65,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 23.912212
+      value: 20.268469
       objectReference: {fileID: 0}
     - target: {fileID: 4256915501301994019, guid: 33ce7fe494f9ab8439e4b21665c9ec65,
         type: 3}
