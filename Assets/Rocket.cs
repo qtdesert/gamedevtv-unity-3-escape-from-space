@@ -37,7 +37,9 @@ public class Rocket : MonoBehaviour {
         if (state == State.Alive) {
             RespondToThrustInput();
             RespondToRotationInput();
-            RespondToDebugKeys();
+            if (Debug.isDebugBuild) {
+                RespondToDebugKeys();
+            }
         }
     }
 
