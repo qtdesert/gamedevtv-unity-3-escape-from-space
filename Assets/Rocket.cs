@@ -23,6 +23,8 @@ public class Rocket : MonoBehaviour {
     enum State { Alive, Dying, Transcending };
     State state = State.Alive;
 
+    bool collisionsDisabled = false;
+
     // Start is called before the first frame update
     void Start() {
         rigidBody = GetComponent<Rigidbody>();
@@ -35,12 +37,12 @@ public class Rocket : MonoBehaviour {
         if (state == State.Alive) {
             RespondToThrustInput();
             RespondToRotationInput();
-            RespondToResetInput();
+            RespondToDebugKeys();
         }
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (state != State.Alive) { return; }
+        if (state != State.Alive || collisionsDisabled) { return; }
         switch (collision.gameObject.tag) {
             case "Friendly":
                 break;
@@ -128,16 +130,13 @@ public class Rocket : MonoBehaviour {
         transform.Rotate(-Vector3.forward * rotationThisFrame);
     }
 
-    private void RespondToResetInput() {
-        if (Input.GetKey(KeyCode.R)) {
-            Reset();
+    private void RespondToDebugKeys() {
+        if (Input.GetKeyDown(KeyCode.L)) {
+            LoadNextLevel();
         }
-    }
-
-    private void Reset() {
-        rigidBody.velocity = Vector3.zero;
-        rigidBody.transform.rotation = Quaternion.identity;
-        rigidBody.MovePosition(new Vector3(-27f, 7f, 0));
+        if (Input.GetKey(KeyCode.C)) {
+            collisionsDisabled = !collisionsDisabled;
+        }
     }
 
     private void PlayAudio(AudioClip audioClip) {
