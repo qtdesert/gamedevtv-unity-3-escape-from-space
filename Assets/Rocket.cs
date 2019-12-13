@@ -18,10 +18,9 @@ public class Rocket : MonoBehaviour {
     Rigidbody rigidBody;
     AudioSource audioSource;
 
-    enum Direction { Left, Right };
-    Direction rotation;
-    enum State { Alive, Dying, Transcending };
-    State state = State.Alive;
+    bool isRotatingLeft = true;
+
+    bool isTransitioning = false;
 
     bool collisionsDisabled = false;
 
@@ -34,7 +33,7 @@ public class Rocket : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (state == State.Alive) {
+        if (!isTransitioning) {
             RespondToThrustInput();
             RespondToRotationInput();
             if (Debug.isDebugBuild) {
@@ -44,7 +43,7 @@ public class Rocket : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (state != State.Alive || collisionsDisabled) { return; }
+        if (isTransitioning || collisionsDisabled) { return; }
         switch (collision.gameObject.tag) {
             case "Friendly":
                 break;
@@ -58,7 +57,7 @@ public class Rocket : MonoBehaviour {
     }
 
     private void StartSuccessSequence() {
-        state = State.Transcending;
+        isTransitioning = true;
         StopAudio();
         PlayAudio(success);
         successParticles.Play();
@@ -66,7 +65,7 @@ public class Rocket : MonoBehaviour {
     }
 
     private void StartDeathSequence() {
-        state = State.Dying;
+        isTransitioning = true;
         StopAudio();
         PlayAudio(death);
         deathParticles.Play();
@@ -74,13 +73,11 @@ public class Rocket : MonoBehaviour {
     }
 
     private void LoadNextLevel() {
-        state = State.Alive;
         int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextLevel % SceneManager.sceneCountInBuildSettings);
     }
 
     private void ReloadLevel() {
-        state = State.Alive;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -89,9 +86,13 @@ public class Rocket : MonoBehaviour {
             Thrust(mainThrust);
         }
         else {
-            StopAudio();
-            mainEngineParticles.Stop();
+            StopApplyingThrust();
         }
+    }
+
+    private void StopApplyingThrust() {
+        StopAudio();
+        mainEngineParticles.Stop();
     }
 
     private void Thrust(float mainThrust) {
@@ -101,31 +102,34 @@ public class Rocket : MonoBehaviour {
     }
 
     private void RespondToRotationInput() {
-        rigidBody.freezeRotation = true;
         float rotationThisFrame = rcsThrust * Time.deltaTime;
-
         if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))) {
-            if (rotation == Direction.Left) {
+            if (isRotatingLeft) {
                 RotateLeft(rotationThisFrame);
-            } else {
-                RotateRight(rotationThisFrame);
+                return;
             }
+            RotateRight(rotationThisFrame);
         } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             RotateLeft(rotationThisFrame);
         } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             RotateRight(rotationThisFrame);
         }
-        rigidBody.freezeRotation = false;
     }
 
     private void RotateLeft(float rotationThisFrame) {
-        rotation = Direction.Left;
-        transform.Rotate(Vector3.forward * rotationThisFrame);
+        isRotatingLeft = true;
+        Rotate(rotationThisFrame);
     }
 
     private void RotateRight(float rotationThisFrame) {
-        rotation = Direction.Right;
-        transform.Rotate(-Vector3.forward * rotationThisFrame);
+        isRotatingLeft = false;
+        Rotate(-rotationThisFrame);
+    }
+
+    private void Rotate(float rotationThisFrame) {
+        rigidBody.freezeRotation = true;
+        transform.Rotate(Vector3.forward * rotationThisFrame);
+        rigidBody.freezeRotation = false;
     }
 
     private void RespondToDebugKeys() {
