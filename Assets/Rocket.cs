@@ -18,11 +18,9 @@ public class Rocket : MonoBehaviour {
     Rigidbody rigidBody;
     AudioSource audioSource;
 
-    bool isRotatingLeft = true;
-
-    bool isTransitioning = false;
-
-    bool collisionsDisabled = false;
+    bool rotatingLeft = true;
+    bool isTransitioning;
+    bool collisionsDisabled;
 
     // Start is called before the first frame update
     void Start() {
@@ -83,7 +81,7 @@ public class Rocket : MonoBehaviour {
 
     private void RespondToThrustInput() {
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow)) {
-            Thrust(mainThrust);
+            Thrust();
         }
         else {
             StopApplyingThrust();
@@ -95,7 +93,7 @@ public class Rocket : MonoBehaviour {
         mainEngineParticles.Stop();
     }
 
-    private void Thrust(float mainThrust) {
+    private void Thrust() {
         rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         PlayAudio(mainEngine);
         mainEngineParticles.Play();
@@ -104,7 +102,7 @@ public class Rocket : MonoBehaviour {
     private void RespondToRotationInput() {
         float rotationThisFrame = rcsThrust * Time.deltaTime;
         if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))) {
-            if (isRotatingLeft) {
+            if (rotatingLeft) {
                 RotateLeft(rotationThisFrame);
                 return;
             }
@@ -117,12 +115,12 @@ public class Rocket : MonoBehaviour {
     }
 
     private void RotateLeft(float rotationThisFrame) {
-        isRotatingLeft = true;
+        rotatingLeft = true;
         Rotate(rotationThisFrame);
     }
 
     private void RotateRight(float rotationThisFrame) {
-        isRotatingLeft = false;
+        rotatingLeft = false;
         Rotate(-rotationThisFrame);
     }
 
